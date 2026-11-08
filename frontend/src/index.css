@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-evening: #192034;
+  --color-evening-card: #202740;
+  --color-evening-dark: #121726;
+  --color-evening-border: #2d3553;
+  --color-stormy: #494E6B;
+  --color-stormy-light: #5f658b;
+  --color-stormy-dark: #373b52;
+  --color-stormy-surface: #262c45;
+  --color-cloud: #98878F;
+  --color-cloud-light: #c2b5bc;
+  --color-cloud-dark: #7a6a72;
+  --color-sunset: #985E6D;
+  --color-sunset-hover: #ad6d7d;
+  --color-sunset-light: #c28190;
+  --color-sunset-dark: #784754;
+
+  --color-threat-low: #3f6e62;
+  --color-threat-low-light: #5a9485;
+  --color-threat-suspicious: #b5834f;
+  --color-threat-high: #a34e5a;
+  --color-threat-malicious: #985E6D;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * {
+    border-color: rgba(73, 78, 107, 0.35);
+  }
+
+  body {
+    background-color: #192034;
+    color: #f1eff1;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbars matching the color scheme */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #192034;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #494E6B;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #985E6D;
+  }
+}
+
+/* Glassmorphic utilities tailored to the palette */
+.glass-panel {
+  background: rgba(32, 39, 64, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(73, 78, 107, 0.35);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(152, 94, 109, 0.5);
+  box-shadow: 0 8px 24px -6px rgba(25, 32, 52, 0.6), 0 0 16px -2px rgba(152, 94, 109, 0.2);
+}
+
+.glass-panel-active {
+  border-color: rgba(152, 94, 109, 0.8);
+  box-shadow: 0 0 20px -4px rgba(152, 94, 109, 0.3);
+}
+
+.subtle-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(73, 78, 107, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(73, 78, 107, 0.08) 1px, transparent 1px);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(152, 94, 109, 0.15) 0%, rgba(73, 78, 107, 0.05) 50%, transparent 80%);
+}
+
+.shimmer-scan {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-scan::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(152, 135, 143, 0) 0,
+    rgba(152, 94, 109, 0.15) 20%,
+    rgba(152, 135, 143, 0.25) 60%,
+    rgba(152, 135, 143, 0)
+  );
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
